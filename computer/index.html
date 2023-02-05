@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>"随乔木凉夏"</title>
+    <style type="text/css">
+        video {
+            position: absolute;
+            right: 0;
+            top: 0;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+            /*加滤镜*/
+            -webkit-filter: grayscale(100%); /*背景模糊设置*/
+            filter: grayscale(50%);
+            z-index: -1; /* 背景灰度设置 */
+        }
+
+        audio {
+            position: absolute;
+            right: 0;
+            top: 0;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+            /*加滤镜*/
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(20%);
+            z-index: 0
+        }
+
+        #music_btn {
+            border-radius: 25px; /*边框圆角*/
+            position: absolute;
+            right: 20px;
+            top: 5px;
+        }
+    </style>
+    <style>
+        #s-box {
+            /* 绝对定位 水平垂直居中 */
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            height: 21px;
+            width: 270px;
+            padding: 0; /*填充；内边框*/
+            border-radius: 40px;
+        }
+
+        #input01 {
+            border-radius: 40px; /*边框圆角*/
+            height: 28px;
+            width: 270px;
+            /*outline: none;边框线不蓝色高亮*/
+        }
+
+        #s-btn {
+            position: absolute;
+            right: -1px;
+            top: -0.3px;
+            border-radius: 25px; /*边框圆角*/
+        }
+
+        /*label > img {*/
+        /*    position: absolute;*/
+        /*    left: 120px;*/
+        /*    top: 25px;*/
+        /*    min-width: 0;*/
+        /*    min-height: 0;*/
+        /*    height: 10px;*/
+        /*    width: 10px;*/
+        /*    z-index: 5*/
+
+        /*}*/
+    </style>
+    <style type="text/css">
+        #box {
+            /* 绝对定位 水平垂直居中 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #05f5cb;
+            height: 40px;
+            padding: 10px;
+            border-radius: 40px;
+        }
+
+        #input02 {
+            border-radius: 40px;
+            border: none;
+            /*outline: none;*/
+            float: left;
+            font-size: 16px;
+            line-height: 40px;
+            width: 0;
+            /* 动画过渡 */
+            transition: 0.4s;
+            background-image: url(主搜索背景.png);
+            background-color: aquamarine;
+            background-repeat: no-repeat;
+            background-size: 25px;
+            background-position: 5px center;
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        .search {
+            color: #e84118;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: aquamarine;
+            /* 弹性布局 水平垂直居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            /* 动画过渡 */
+            transition: 0.4s;
+
+        }
+
+        #box:hover #input02 {
+            width: 600px;
+            padding: 0 6px;
+        }
+
+        #box:hover #btn {
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+<!--https://duba-static.iscrv.com/static/v4/preview_img_raw/97ba6b60662ab4f31ef06cdf5a5f8e94_preview_raw.jpg-->
+<!--https://duba-static.iscrv.com/static/v4/preview_video/97ba6b60662ab4f31ef06cdf5a5f8e94_preview.mp4-->
+<video autoplay="autoplay" loop="loop" muted="muted" class="bg_video" data-v-2c8dbd80=""
+       poster="落叶关键帧.jpg"
+       src="落叶🍂.mp4">
+</video>
+<!--https://aod.cos.tx.xmcdn.com/storages/099f-audiofreehighqps/4E/1A/CKwRINsFQ17LABAAAADt-2cD.mp3-->
+<audio id="music" src="华语群星%20-%20云水禅心%20(古筝版).mp3"
+       loop="loop">你的浏览器不支持audio标签。
+</audio>
+<!--暂停https://img-qn.51miz.com/preview/element/00/01/18/15/E-1181523-F7565229.jpg-->
+<!--播放https://bpic.51yuansu.com/pic2/cover/00/36/78/5811e5ff18fc2_610.jpg-->
+<button id="music_btn" onclick="playPause();"><img id="music_img"
+                                                   src="暂停图标.png"
+                                                   width="10"
+                                                   height="10" border="0" alt=""></button>
+<script type="text/javascript">
+    var playPause = function () {
+        //alert("我运行了！");
+        const audio_music = document.getElementById("music");
+        const audio_btn = document.getElementById("music_img");
+        if (audio_music.paused) {
+            audio_music.play();
+            audio_btn.src = "播放图标.png";
+        } else {
+            audio_music.pause();
+            audio_btn.src = "暂停图标.png";
+        }
+    }
+</script>
+<!-- 浏览器次搜索框 -->
+<form id="s-box" onsubmit="return false">
+    <label>
+        <input id="input01" type="search" placeholder="    随乔木凉夏" style="padding-left: 10px" list="show-list">
+        <datalist id="show-list">
+            <option value="0">爱奇艺:http://vip.iqiyi.com/</option>
+            <option value="1">腾讯视频:http://film.qq.com/</option>
+            <option value="2">youku优酷:http://vip.youku.com/</option>
+            <option value="3">芒果tv:http://www.mgtv.com/vip/</option>
+            <option value="4">bilibili(B站):https://www.bilibili.com/</option>
+            <option value="5">搜狐视频:https://film.sohu.com/</option>
+            <option value="6">Letv乐视网:http://vip.le.com/</option>
+            <option value="7">风行网:http://fs.fun.tv/vip</option>
+            <option value="8">PPTV:http://vip.pptv.com/</option>
+            <option value="9">M1905电影网:https://vip.1905.com/</option>
+        </datalist>
+        <select id="select-all" style="color: #42ff3a;border-radius: 20%;width: 150px">
+            <option value="0">爱奇艺:http://vip.iqiyi.com/</option>
+            <option value="1">腾讯视频:http://film.qq.com/</option>
+            <option value="2">youku优酷:http://vip.youku.com/</option>
+            <option value="3">芒果tv:http://www.mgtv.com/vip/</option>
+            <option value="4">bilibili(B站):https://www.bilibili.com/</option>
+            <option value="5">搜狐视频:https://film.sohu.com/</option>
+            <option value="6">Letv乐视网:http://vip.le.com/</option>
+            <option value="7">风行网:http://fs.fun.tv/vip</option>
+            <option value="8">PPTV:http://vip.pptv.com/</option>
+            <option value="9">M1905电影网:https://vip.1905.com/</option>
+        </select>
+        <button style="cursor:pointer" type="button" id="s-btn" onclick="s_Search"><img src="搜索图标.png" width="21" id="s-img" height="21"
+                                                                 alt=""></button>
+        <!--https://bpic.51yuansu.com/pic3/cover/03/34/23/5b877bf5f2d7b_610.jpg-->
+    </label>
+</form>
+<script>var s_oInp = document.getElementById("input01");
+var s_oBtn = document.getElementById("s-btn");
+var s_select = document.getElementById("select-all")
+s_oBtn.onclick = function () {
+    s_Search();
+}
+// document.onkeydown = function () {
+//     var event = window.event
+//     if (event.keyCode === 13) {
+//         s_Search();
+//     }
+// }
+
+function s_Search() {
+    if (s_select.value === "0") {
+        var iQIYI_url = 'https://so.iqiyi.com/so/q_' + s_oInp.value;
+        alert("即将跳转至爱奇艺~")
+        window.open(iQIYI_url);
+    }
+    if (s_select.value === "1") {
+        var tencent_url = 'https://v.qq.com/x/search/?q=' + s_oInp.value;
+        alert("即将跳转至腾讯视频~")
+        window.open(tencent_url);
+    }
+    if (s_select.value === "2") {
+        var youku_url = 'https://so.youku.com/search_video/q_' + s_oInp.value;
+        alert("即将跳转至优酷视频~")
+        window.open(youku_url);
+    }
+    if (s_select.value === "3") {
+        var mgtv_url = 'https://so.mgtv.com/so?k=' + s_oInp.value;
+        alert("即将跳转至芒果TV~")
+        window.open(mgtv_url);
+    }
+    if (s_select.value === "4") {
+        var bilibili_url = 'https://search.bilibili.com/all?keyword=' + s_oInp.value;
+        alert("即将跳转至bilibili~")
+        window.open(bilibili_url);
+    }
+    if (s_select.value === "5") {
+        var sohu_url = 'https://so.tv.sohu.com/mts?wd=' + s_oInp.value;
+        alert("即将跳转至搜狐视频~")
+        window.open(sohu_url);
+    }
+}</script>
+<!-- 浏览器主搜索框 -->
+<form id="box" onsubmit="return false"> <!--target="_blank" method="get" action="https://cn.bing.com/search?q="-->
+    <label>
+        <input id="input02" type="search" name="search" placeholder="随乔木凉夏" style="padding-left: 40px"
+               aria-hidden="true" autocomplete="off"
+               autofocus="autofocus">
+        <input style="cursor: pointer" type="button" value="搜索" class="search" id="btn">
+    </label>
+    <div id="search"></div>
+</form>
+<script>var oInp = document.getElementById('input02');
+var oBtn = document.getElementById('btn');
+oBtn.onclick = function () {
+    Search();
+}
+// document.onkeydown = function () {
+//     var event = window.event
+//     if (event.keyCode === 13) {
+//         Search();
+//     }
+// }
+function Search() {
+    if (oInp.value.substring(0, 4) === "bing") {
+        var bing_url = 'https://cn.bing.com/search?q=' + oInp.value.substr(4);
+        window.open(bing_url);
+    } else {
+        var baidu_url = 'https://www.baidu.com/s?wd=' + oInp.value;
+        window.open(baidu_url);
+    }
+
+}</script>
+<iframe id="weather" allowtransparency="true" width="140" height="278"
+        style="position: fixed;left: 5px;top: 100px;border: none"
+        src="//tianqi.2345.com/plugin/widget/index.htm?s=2&z=3&t=0&v=1&d=3&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=0&c=70328&w=140&h=278&align=center"></iframe>
+<div id="tp-weather-widget"></div>
+<!-- 天气插件 -->
+<script>
+    (function (a, h, g, f, e, d, c, b) {
+        b = function () {
+            d = h.createElement(g);
+            c = h.getElementsByTagName(g)[0];
+            d.src = e;
+            d.charset = "utf-8";
+            d.async = 1;
+            c.parentNode.insertBefore(d, c)
+        };
+        a["SeniverseWeatherWidgetObject"] = f;
+        a[f] || (a[f] = function () {
+            (a[f].q = a[f].q || []).push(arguments)
+        });
+        a[f].l += new Date();
+        if (a.attachEvent) {
+            a.attachEvent("onload", b)
+        } else {
+            a.addEventListener("load", b, false)
+        }
+    }(window, document, "script", "SeniverseWeatherWidget", "//CDN.sencdn.com/widget2/static/js/bundle.js?t=" + parseInt((new Date().getTime() / 100000000).toString(), 10)));
+    window.SeniverseWeatherWidget('show', {
+        flavor: "bubble",
+        location: "WX4FBXXFKE4F",
+        geolocation: true,
+        language: "zh-Hans",
+        unit: "c",
+        theme: "auto",
+        token: "ac1d036a-99f3-4f88-ae98-f795bb93a9f0",
+        hover: "disabled",
+        container: "tp-weather-widget"
+    })
+</script>
+<!-- 天气插件 -->
+<iframe style="left: 110px;top: 0;position: absolute;z-index: 1" frameborder="no" border="0" marginwidth="0" marginheight="0"
+        width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8013551237&auto=0&height=430"></iframe>
+<!--音乐播放器-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script src="https://myhkw.cn/player/js/player.js" id="myhk" key="demo" m="1"></script>
+<!--音乐播放器-->
+<time id="cod" style="color: #05f5cb;position:absolute;left: 120px;top: 105px">
+    <script>
+        function fndate() {
+            var oDiv = document.getElementById("cod");
+            var date = new Date();
+            var year = date.getFullYear();//当前年份
+            var month = date.getMonth();//当前月份
+            var data = date.getDate();//天
+            var hours = date.getHours();//小时
+            var minute = date.getMinutes();//分
+            var second = date.getSeconds();//秒
+            oDiv.innerHTML = year + "-" + fnW((month + 1)) + "-" + fnW(data) + " " + fnW(hours) + ":" + fnW(minute) + ":" + fnW(second);
+            setTimeout("fndate()", 1000);
+        }
+
+        function fnW(str) {
+            var num;
+            str > 10 ? num = str : num = "0" + str;
+            return num;
+        }
+
+        fndate();
+    </script>
+</time>
+<!--显示时间-->
+<p id="demo" style="position: fixed;left: 5px;top: 360px;border: none"></p>
+<button onclick="getlocation()" style="border-radius: 10%;cursor: crosshair;position: fixed;left: 5px;top: 420px;border: none;z-index: 0">获取当前经纬度坐标</button>
+<script>
+    var x = document.getElementById("demo");
+
+    function getlocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "该浏览器不支持定位。";
+        }
+    }
+
+    function showPosition(position) {
+        alert("正在获取经纬度~")
+        x.innerHTML = "纬度：" + position.coords.latitude + "<br>经度:" + position.coords.longitude;
+    }
+
+    function showError(error) {
+        switch (error) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "用户禁止使用定位。"
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "位置信息不可用。"
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "请求超时"
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "未知错误"
+                break;
+        }
+    }
+</script>
+</body>
+</html>
